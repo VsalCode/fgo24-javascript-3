@@ -18,7 +18,7 @@ if(kata === palindrom){
 
 const reverseBuiltIn = "saya belajar js";
 
-console.log(reverseBuiltIn.split(" ").reverse());
+console.log(reverseBuiltIn.split(" ").reverse().join(" "));
 
 /*----------------------------------------------------------------
 CARA MANUAL
@@ -27,7 +27,7 @@ CARA MANUAL
 // 1. Palindrom
 
 function deteksiPalindrom(inputKata) {
-  kata = inputKata
+  let kata = inputKata
   let palindrom = "";
   
   for (let i = kata.length - 1; i >= 0; i--) {
