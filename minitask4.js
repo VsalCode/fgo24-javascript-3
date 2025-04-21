@@ -11,7 +11,6 @@ if(kata === palindrom){
   console.log("palindrom");
 } else{
   console.log("bukan palindorm");
-  
 }
 
 // 2. Reverse Words
@@ -41,21 +40,24 @@ function deteksiPalindrom(inputKata) {
   }
 }
 
-deteksiPalindrom("siang");
+deteksiPalindrom("malam");
 
 // 2. Reverse Words
 
-function reverseWords(inputKalimat) {
-  const kalimat = inputKalimat.split(' ');
-  const reserve = [];
-  
-  // reverse kalimat
-  for (let i = 0; i < kalimat.length; i++) {
-      const indexTerbalik = kalimat.length - 1 - i;
-      reserve.push(kalimat[indexTerbalik]);
+function reverseWord2(kalimat) {
+  let reserve = "";
+  let word = "";
+  for (let i = kalimat.length - 1; i >= 0; i--) {
+    if (kalimat[i] === " ") {
+      reserve += word + " ";
+      word = "";
+    } else {
+      word = kalimat[i] + word;
+    }
   }
-  // Gabung kalimat
-  return reserve.join(' ');
+  reserve += word;
+
+  console.log(reserve);
 }
 
-console.log(reverseWords("saya belajar js")); 
+reverseWord2("Saya belajar Javascript");
