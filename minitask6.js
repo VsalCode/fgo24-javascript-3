@@ -1,39 +1,33 @@
 const url = "https://jsonplaceholder.typicode.com/users"
 
-/*----------------------------------------------------------
-BUILT IN
-----------------------------------------------------------*/
-// then catch
+/* ------------------------------------------------------------------------
+CARA BUILT IN METHOD
+------------------------------------------------------------------------ */
 
+// the catch
 fetch(url).then((res) => {
-  return res.json()
+  return res.json() // kalau pakai kurung kurawal harus tulis returm, kalau ga gausah
 }).then((data) => {
-  data.forEach((item) => {
-    const email = item.email
-    const arr = email.split(" ") 
-    console.log(arr)
-  });
+  const emailUsers = data.map(item => item.email.toLowerCase())
+  console.log(emailUsers);
 }).catch((err) => {
   console.log(err);
 })
 
-// async
-
-const apiCall = async () => {
+// async await
+const handleData = async () => {
   try{
-     const apiCallPromise  = await 
-     fetch('https://jsonplaceholder.typicode.com/users');
-     const apiCallObj = await apiCallPromise.json();
-    
-     apiCallObj.forEach(item => {
-      const email = item.email
-      const arr = email.split(" ")
-      console.log(arr)
-     });
-    }
-  catch(error){
-     console.error(error);
-  };
-};
+    const fetchData = await fetch(url)
+    const data = fetchData.json()
+    const emailUsers = data.map(item => item.email.toLowerCase())
+    console.log(emailUsers);
+  }catch(err){
+    console.log(err);
+  }
+}
 
-apiCall()
+handleData()
+
+/* ------------------------------------------------------------------------
+CARA MANUAL
+------------------------------------------------------------------------ */
