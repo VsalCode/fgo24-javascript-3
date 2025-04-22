@@ -20,12 +20,20 @@ fetch(url).then((res) => {
 // async
 
 const apiCall = async () => {
-  const data  = await 
-  fetch("https://jsonplaceholder.typicode.com/users");
-  data.forEach((item) => {
-    const email = item.email
-    console.log(email)
-  });
+  try{
+     const apiCallPromise  = await 
+     fetch('https://jsonplaceholder.typicode.com/users');
+     const apiCallObj = await apiCallPromise.json();
+    
+     apiCallObj.forEach(item => {
+      const email = item.email
+      const arr = email.split(" ")
+      console.log(arr)
+     });
+    }
+  catch(error){
+     console.error(error);
+  };
 };
 
 apiCall()
