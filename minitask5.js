@@ -56,17 +56,22 @@ function queue(name, time){
 }
 
 async function handlingQueue() {
-    try {
-      const result = await queue("John", 1500)
-      console.log(result);
-        const result2 = await queue("Ed", 2000)
-        console.log(result2);
-          const result3 = await queue("Jane", 500)
-          console.log(result3);
-    } catch(error) {
-      console.log(error);
-      
-    }
+  try {
+    const results = await Promise.all([
+      queue("John", 1500),
+      queue("Ed", 2000),
+      queue("Jane", 500)
+    ]) 
+    results.forEach((result) => {
+      if (result.status == "fulfilled") {
+        console.log(result.value);
+      }
+  })    
+  } catch(error) {
+    console.log(error);
+    
+  }
 }
 
 handlingQueue()
+
