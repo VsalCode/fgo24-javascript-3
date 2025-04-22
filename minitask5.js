@@ -36,7 +36,6 @@ queue("John", 1500).then((result1) => {
 ASYNC AWAIT
 ---------------------------------------------------------*/
 
-
 function queue(name, time){
   return new Promise((resolve, reject) => {
     if (typeof time != "number" || time <= 0 || typeof name != "string" ) {
@@ -55,7 +54,7 @@ function queue(name, time){
   })
 }
 
-async function handlingQueue() {
+const handlingQueue = async () => {
   try {
     const results = await Promise.all([
       queue("John", 1500),
